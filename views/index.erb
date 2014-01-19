@@ -1,0 +1,54 @@
+<div class="list-wrapper" id="home-latest-games-wrapper">
+    <h2>Latest Games</h2>
+    <ul class="latest-games-list list">
+        <li class="head">
+            <div class="white">White</div>
+            <div class="black">Black</div>
+            <div class="winner">Winner</div>
+        </li>
+
+        <% @latest_games.each do |game| %>
+            <li>
+                <div class="white">
+                    <a class="list-link" href="/players/<%= game.white_id %>">
+                        <% player = Player.find(game.white_id) %>
+                        <%= "#{player.first_name} #{player.last_name}" %>
+                    </a>
+                </div>
+                
+                <div class="black">
+                    <a class="list-link" href="/players/<%= game.black_id %>">
+                        <% player = Player.find(game.black_id) %>
+                        <%= "#{player.first_name} #{player.last_name}" %>
+                    </a>
+                </div>
+                
+                <div class="winner"><%= game.winner %></div>
+            </li>
+        <% end %>
+
+    </ul>
+</div>
+
+<div class="list-wrapper" id="home-leaderboard-wrapper">
+    <h2>Leaderboard</h2>
+    
+    <ul class="leaderboard list">
+        <li class="head">
+            <div class="name">Name</div>
+            <div class="rating">Rating</div>
+        </li>
+
+        <% @leaderboard.each do |player| %>
+            <li>
+                <div class="name">
+                    <a class="list-link" href="/players/<%= player.id %>">
+                        <%= "#{player.first_name} #{player.last_name}" %>
+                    </a>
+                </div>
+                <div class="rating"><%= player.rating.to_i() %></div>
+            </li>
+        <% end %>
+
+    </ul>
+</div>

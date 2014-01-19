@@ -1,0 +1,41 @@
+<div id="players-wrapper" class="list-wrapper">
+    <h2>Players</h2>
+    <ul class="players-list list">
+    	<li class="head">
+            <div class="name">Name</div>
+            <div class="rating">Rating</div>
+            <div class="games">G</div>
+            <div class="wins">W</div>
+            <div class="draws">D</div>
+            <div class="losses">L</div>
+        </li>
+
+        <% @all_players.each do |player| %>
+	        <li>
+                <div class="name">
+                    <a class="list-link" href="/players/<%= player.id %>">
+                        <%= "#{player.first_name} #{player.last_name}" %>
+                    </a>
+                </div>
+                <div class="rating"><%= player.rating.to_i() %></div>
+                <div class="games"><%= player.wins + player.losses + player.draws%></div>
+                <div class="wins"><%= player.wins %></div>
+                <div class="draws"><%= player.draws %></div>
+                <div class="losses"><%= player.losses %></div>
+                <div class="remove">
+                    <form method="post" action="/players/<%= player.id %>">
+                        <button type="Submit" class="remove-button">Remove</button>
+                    </form>
+                    <a href="/players/<%= player.id %>/edit">
+                        <button type="Submit" class="edit-button">Edit</button>
+                    </a>
+                </div>
+            </li>
+	        
+        <% end %>
+
+    </ul>
+    <div class="player-buttons">
+        <a class="add-player-link button-link" href="/players/add">Add Player</a>
+    </div>
+</div>

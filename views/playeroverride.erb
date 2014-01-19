@@ -1,0 +1,49 @@
+<div class="form-wrapper" id="player-override-wrapper">
+	<h2><%= "#{@player.first_name} #{@player.last_name} - Override" %></h2>
+
+	<form id="override-player-form" action="/players/<%= @player.id %>/override" method="post">
+        
+        <div class="form-el" id="active-wrapper">
+            <label for="active">Winner</label><br>
+            <input type="radio" name="active" value="true" id="radio-active">
+            <label for="radio-active" class="radio-label">Active</label><br>
+            <input type="radio" name="active" value="false" id="radio-inactive">
+            <label for="radio-inactive" class="radio-label">Inactive</label><br>
+        </div>
+
+        <div class="form-el">
+            <label for="first_name">First Name</label><br>
+            <input type="text" id="first_name" name="first_name" value="<%= @player.first_name %>"/>
+        </div>
+
+        <div class="form-el">
+            <label for="last_name">Last Name</label><br>
+            <input type="text" id="last_name" name="last_name" value="<%= @player.last_name %>"/>
+        </div>
+
+        <div class="form-el">
+            <label for="rating">Rating</label><br>
+            <input type="text" id="rating" name="rating" value="<%= @player.rating %>"/>
+        </div>
+
+        <div class="form-el">
+            <label for="wins">Wins</label><br>
+            <input type="text" id="wins" name="wins" value="<%= @player.wins %>"/>
+        </div>
+
+        <div class="form-el">
+            <label for="losses">Losses</label><br>
+            <input type="text" id="losses" name="losses" value="<%= @player.losses %>"/>
+        </div>
+
+        <div class="form-el">
+            <label for="draws">Draws</label><br>
+            <input type="text" id="draws" name="draws" value="<%= @player.draws %>"/>
+        </div>
+
+        <div class="form-el">
+            <button id="submit" value="Submit">Submit</button>
+        </div>
+    </form>
+
+</div>

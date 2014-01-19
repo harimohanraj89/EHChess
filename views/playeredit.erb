@@ -1,0 +1,20 @@
+<div class="form-wrapper" id="player-edit-wrapper">
+    <h2><%= "#{@player.first_name} #{@player.last_name} - Edit" %></h2>
+
+    <form id="edit-player-form" action="/players/<%= @player.id %>/edit" method="post">
+        <div class="form-el">
+            <label for="first_name">First Name</label><br>
+            <input type="text" id="first_name" name="first_name" value="<%= @player.first_name %>"/>
+        </div>
+
+        <div class="form-el">
+            <label for="last_name">Last Name</label><br>
+            <input type="text" id="last_name" name="last_name" value="<%= @player.last_name %>"/>
+        </div>
+
+        <div class="form-el">
+            <button id="submit" value="Submit">Submit</button>
+        </div>
+    </form>
+
+</div>

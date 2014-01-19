@@ -1,0 +1,49 @@
+<div class="form-wrapper">
+    <h2>Submit Your Game</h2>
+    
+    <form id="game-submit-form" action="/games" method="post">
+        <div class="form-el" id="player-select-wrapper">
+            <table>
+                <thead>
+                    <th class="white-col">
+                        <label for="white_id">White</label>
+                    </th>
+                    <th class="player-col">
+                        <label>Player</label>
+                    </th>
+                    <th class="black-col">
+                        <label for="black_id">Black</label>
+                    </th> 
+                </thead>          
+
+                <% @players.each do |player| %>
+                    <tr>
+                        <td class="white-col"><input type="radio" name="white_id" value="<%= player.id %>" id="white-<%= "#{player.first_name}-#{player.last_name}" %>"></td>
+                        <td class="player-col"><label for="white-<%= "#{player.first_name}-#{player.last_name}" %>" class="radio-label"><%= "#{player.first_name} #{player.last_name}" %></label></td>
+                        <td class="black-col"><input type="radio" name="black_id" value="<%= player.id %>" id="black-<%= "#{player.first_name}-#{player.last_name}" %>"></td>
+                    </tr>
+                <% end %>
+                
+            </table>
+        </div>
+        
+        <div class="form-el" id="winner-wrapper">
+            <label for="winner">Winner</label><br>
+            <input type="radio" name="winner" value="white" id="radio-white">
+            <label for="radio-white" class="radio-label">White</label><br>
+            <input type="radio" name="winner" value="black" id="radio-black">
+            <label for="radio-black" class="radio-label">Black</label><br>
+            <input type="radio" name="winner" value="draw" id="radio-draw">
+            <label for="radio-draw" class="radio-label">Draw</label><br>
+        </div>
+
+        <div class="form-el" id="comments-wrapper">
+            <label for="game-comments">Comments</label><br>
+            <textarea id="game-comments"></textarea>
+        </div>
+
+        <div class="form-el" id="submit-wrapper">
+            <button id="submit" value="Submit">Submit</button>
+        </div>
+    </form>
+</div>

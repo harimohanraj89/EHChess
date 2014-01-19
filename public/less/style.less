@@ -1,0 +1,527 @@
+// ---------------------------------------- //
+//			THE "BOOTSTRAP" SKIN			//
+// ---------------------------------------- //
+
+@import 'mixins.less';
+
+@trueWhite	: #fff;
+@trueBlack	: #000;
+@black		: #333;
+@darkGray	: #555;
+@gray		: #828888;
+@lightGray	: #aaa;
+
+@textColor1		: @black;
+@textColor2		: #fff;
+@headingColor	: #333;
+@listColor		: #eeeef3;
+
+@h1Size		: 48px;
+@h2Size		: 32px;
+@h3Size		: 28px;
+@h4Size		: 24px;
+@h5Size		: 20px;
+@h6Size		: 16px;
+@textSize	: 14px;
+
+@primaryButtonColor: 		rgba(56, 121, 217, 1);
+@secondaryButtonColor: 		rgba(217, 217, 217, 1);
+@dangerButtonColor:			rgba(217, 56, 56, 1);
+
+@buttonBorderWidth:			3px;
+@smallButtonBorderWidth:	2px;
+@bigButtonBorderWidth:		4px;
+
+@linkColor:rgba(56, 121, 217, 1);
+@linkHoverColor:darken(@linkColor, 10%);
+
+@dangerLinkColor:rgba(217,56,81,1);
+@dangerLinkHoverColor:darken(@dangerLinkColor, 10%);
+
+// ---------------------------------------- //
+//				  TYPOGRAPHY				//
+// ---------------------------------------- //
+
+.bigtext {
+	font-size:@textSize*1.5;
+}
+
+.normaltext {
+	font-size:@textSize;
+}
+
+.smalltext {
+	font-size:@textSize*0.8;
+}
+
+h1, h2, h3, h4, h5 ,h6 {
+	color:@headingColor;
+	margin:0;
+}
+
+h1 {
+	font-size:@h1Size;
+}
+
+h2 {
+	font-size:@h2Size;
+}
+
+h3 {
+	font-size:@h3Size;
+}
+
+h4 {
+	font-size:@h4Size;
+}
+
+h5 {
+	font-size:@h5Size;
+}
+
+h6 {
+	font-size:@h6Size;
+}
+
+// ---------------------------------------- //
+//			  BUTTONS AND FORMS				//
+// ---------------------------------------- //
+
+button, input[type="submit"], .button-link {
+	.button(@primaryButtonColor, @textColor2);
+}
+
+.button(@buttonColor, @textColor) {
+
+	padding:@textSize @textSize*3;
+
+	background:@buttonColor;
+
+	border-width:@buttonBorderWidth;
+	border-style:solid;
+	border-top-color: @buttonColor;
+	border-left-color: @buttonColor;
+	border-right-color: darken(@buttonColor, 10%);
+	border-bottom-color: darken(@buttonColor, 10%);
+
+	// border: 1px solid darken(@buttonColor, 10%);
+	border-radius: @textSize/3;
+
+	color:@textColor;
+	font-size:@textSize;
+	text-transform:uppercase;
+	text-decoration:none;
+
+	&:hover {
+		border-top-color: lighten(@buttonColor, 5%);
+		border-left-color: lighten(@buttonColor, 5%);
+		border-right-color: darken(@buttonColor, 5%);
+		border-bottom-color: darken(@buttonColor, 5%);
+		background:lighten(@buttonColor, 5%);
+	}
+	&:active {
+		border-bottom-color: darken(@buttonColor,5%);
+		border-right-color: darken(@buttonColor,5%);
+		border-left-color: darken(@buttonColor, 10%);
+		border-top-color: darken(@buttonColor, 10%);
+		background:darken(@buttonColor, 5%);
+	}
+}
+
+.danger-button() {
+	.button(@dangerButtonColor, @textColor2);
+}
+
+.small-button() {
+	.smalltext();
+	border-width:@smallButtonBorderWidth;
+	padding:@textSize/2.5 @textSize*0.75;
+}
+
+.big-button() {
+	.bigtext();
+	border-width:@bigButtonBorderWidth;
+	padding:@textSize*1.5 @textSize*4.5;
+}
+
+input[type="checkbox"] {
+	border:1px solid #f00;
+}
+
+input[type="text"],
+textarea {
+	margin-bottom:@textSize;
+
+	box-shadow:none;
+	border:none;
+
+	font-size:@textSize;
+	padding:@textSize/2;
+
+	border-radius:@textSize/3;
+	border:1px solid @lightGray;
+}
+
+textarea {
+	height:@textSize*8;
+	resize:none;
+}
+
+input[type="radio"],
+label.radio-label {
+	margin-top:@textSize*0.75;
+}
+
+label {
+	color:@gray;
+	&.radio-label {
+		color:@textColor1;
+	}
+}
+
+// ---------------------------------------- //
+//				 PAGE ELEMENTS				//
+// ---------------------------------------- //
+
+.list {
+	list-style:none;
+	padding:0;
+	li {
+		margin:15px 0;
+		padding:@textSize @textSize*3;
+		background:@listColor;
+
+		border-right:2px solid @listColor - #090909;	
+		border-bottom:2px solid @listColor - #090909;	
+
+		&.head {
+			background:none;
+			border:none;
+			font-weight:700;
+		}
+
+		a.list-link {
+			text-decoration:none;
+			font-weight:700;
+			color:inherit;
+
+			&:hover {
+				color:@linkColor;
+			}
+		}
+	}
+}
+
+.navbar() {
+	padding:0;
+	margin:0;
+	list-style:none;
+	width:100%;
+	.clearfix;
+
+	border-bottom:1px solid @lightGray;
+
+	li {
+		float:left;
+		padding:0.5rem 1rem;
+	}
+}
+
+// ---------------------------------------- //
+//					LINKS					//
+// ---------------------------------------- //
+
+.link() {
+	color:@linkColor;
+	font-weight:800;
+	text-decoration:none;
+	&:visited {
+		color:@linkColor;
+	}
+	&:hover{
+		color:@linkHoverColor;
+	}
+}
+
+.danger-link() {
+	color:@dangerLinkColor;
+	font-weight:800;
+	text-decoration:none;
+	&:visited {
+		color:@dangerLinkColor;
+	}
+	&:hover{
+		color:@dangerLinkHoverColor;
+	}
+	
+}
+
+/* ---------------------------------------- *//* ---------------------------------------- */
+
+
+
+
+
+// ---------------------------------------- //
+//			GLOBAL DOM ELEMENTS				//
+// ---------------------------------------- //
+
+
+html {
+	// background:#e3e3e3;
+	background:@trueWhite;
+	padding:0;
+	height:100%;
+}
+
+body {
+	margin-top:0;
+	margin-bottom:0;
+	margin-left:auto;
+	margin-right:auto;
+
+	padding:20px;
+
+	width:80%;
+	min-width:800px;
+	min-height:100%;
+
+	background:@trueWhite;
+	// box-shadow:0 0 5px 0 #666;
+	// border-right:1px solid #ddd;
+	// border-left:1px solid #ddd;
+
+	font-family:"Roboto", "Arial", sans-serif;
+	color:@textColor1;
+}
+
+// ---------------------------------------- //
+//				   WRAPPERS					//
+// ---------------------------------------- //
+
+.heading-wrapper {
+	padding-top:24px;
+	h1 {
+		text-align:center;	
+	}
+	
+	.nav {
+		.navbar;
+		li {
+			a {
+				font-weight:800;
+				color:@linkColor;
+				text-decoration:none;
+
+				&:visited {
+					color:@linkColor;
+				}
+				&:hover {
+					color:@linkHoverColor;
+				}
+			}
+		}
+	}
+}
+
+.body-wrapper {
+	width:90%;
+	margin-left:auto;
+	margin-right:auto;
+	.clearfix;
+
+	#home-latest-games-wrapper {
+		width:60%;
+		float:left;
+	}
+	#home-leaderboard-wrapper {
+		width:40%;
+		float:left;
+	}
+
+	.form-wrapper,
+	.list-wrapper,
+	#player-wrapper {
+		padding: 32px;
+	}
+
+	.form-wrapper {
+		#main {
+			margin-left:auto;
+			margin-right:auto;
+			width:400px;
+			
+			.form-el {
+				margin:@textSize 0;
+
+				label {
+					clear:right;
+				}
+			}
+		}
+	}
+
+	#game-submit-form {
+		.form-el {
+			float:left;
+			width:50%;
+			margin:@textSize 0;
+		}
+
+		#player-select-wrapper {
+			table {
+				text-align:center;
+				// width:100%;
+				thead th {
+					font-weight:400;
+				}
+
+				tr td {
+					vertical-align:bottom;
+					padding:8px;
+				}
+			}
+		}
+
+		#submit-wrapper {
+			clear:both;
+		}
+	}
+
+	.sub-wrapper {
+		padding-top:32px;
+	}
+
+	#player-stats-wrapper {
+		float:left;
+		width:40%;
+		padding-right:16px;
+
+		#player-stats-table {
+			margin-top:32px;
+			width:100%;
+
+			tr {
+				height:32px;
+			}
+
+			.stats-val {
+				font-weight:700;
+			}
+
+			#rating-row {
+				.stats-val {
+					.bigtext;
+				}
+			}
+		}
+	}
+
+	#player-recent-games-wrapper {
+		float:left;
+		width:60%;
+		padding-left:16px;
+	}
+
+
+// ---------------------------------------- //
+//					LISTS					//
+// ---------------------------------------- //
+
+	.list-wrapper ul li {
+		.clearfix;
+		div {
+			float:left;
+		}
+
+		.remove {
+			float:right;
+			.edit-button {
+				float:right;
+				// .danger-button();
+				.small-button();
+			}
+			.remove-button {
+				float:right;
+				.danger-button();
+				.small-button();
+			}
+		}
+	}
+
+	.latest-games-list,
+	.recent-games-list {
+		li {
+			.white	{width:42.5%;}
+			.black	{width:42.5%;}
+			.winner {width:15%;}
+
+			.white a {
+				color:@gray;
+				&:hover {
+					color:@linkColor;
+				}
+			}
+
+			.black a {
+				color:@trueBlack;
+				&:hover {
+					color:@linkColor;
+				}
+			}
+		}
+	}	
+
+	.leaderboard {
+		li {
+			.name	{width:75%;}
+			.rating {width:25%;}
+		}
+	}
+
+	.games-list {
+		li {
+			.white	{width:35%;}
+			.black	{width:35%;}
+			.winner {width:20%;}
+			.remove {width:10%;}
+
+			.white a.list-link {
+				color:@gray;
+				&:hover {
+					color:@linkColor;
+				}
+			}
+
+			.black a.list-link {
+				color:@trueBlack;
+				&:hover {
+					color:@linkColor;
+				}
+			}
+
+			a.subtle-rating {
+				font-weight:700;
+				.normaltext;
+				color:@darkGray;
+			}
+		}
+	}
+
+	.players-list {
+		li {
+			.name	{width:25%;}
+			.rating	{width:15%;}
+			.games	{width:8%;}
+			.wins	{width:8%;}
+			.losses	{width:8%;}
+			.draws	{width:8%;}
+			.remove	{width:28%;}
+		}
+	}
+
+	.player-buttons {
+		margin-top:32px;
+	}
+}
+
