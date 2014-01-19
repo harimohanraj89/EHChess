@@ -8,5 +8,4 @@ gem 'rake'
 gem 'sinatra-activerecord'
 gem 'activerecord'
 
-gem 'sqlite3'
 gem 'pg'
