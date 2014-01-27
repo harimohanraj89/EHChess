@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20140107235904) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "games", force: true do |t|
     t.integer  "white_id"
     t.integer  "black_id"
