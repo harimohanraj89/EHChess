@@ -58,6 +58,6 @@ DEPENDENCIES
   activerecord
   pg
   rake
-  sinatra
+  sinatra (= 1.4.4)
   sinatra-activerecord
   sinatra-reloader
