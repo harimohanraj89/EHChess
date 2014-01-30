@@ -21,6 +21,7 @@ GEM
     backports (3.4.0)
     builder (3.1.4)
     i18n (0.6.9)
+    json (1.8.1)
     minitest (4.7.5)
     multi_json (1.8.2)
     pg (0.17.1)
@@ -56,6 +57,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  json
   pg
   rake
   sinatra (= 1.4.4)

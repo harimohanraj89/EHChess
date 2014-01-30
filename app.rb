@@ -145,7 +145,7 @@ end
 
 get '/players/:id' do
 	@player = Player.find(params[:id])
-	@recent_games = Game.where("white_id = ? OR black_id = ?", params[:id], params[:id])
+	@recent_games = Game.where("white_id = ? OR black_id = ?", params[:id], params[:id]).limit(5)
 
 	@games = @player.wins+@player.draws+@player.losses
 	if @games > 0
@@ -204,6 +204,17 @@ post '/players/:id/override' do
 	
 	player.save
 	redirect '/players'
+end
+
+get '/players/:id/ratings.json' do
+
+	@player = Player.find(params[:id])
+	@player_games = Game.where("white_id = ? OR black_id = ?", params[:id], params[:id]).order(created_at: :desc)
+
+	player_ratings = @player_games.map{ |game| params[:id] == game.white_id ? game.white_rating : game.black_rating}
+	player_ratings.push(@player.rating)
+
+	{:ratings => player_ratings}.to_json
 end
 
 get '/test' do

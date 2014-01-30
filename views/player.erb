@@ -67,4 +67,13 @@
 	    </ul>
 	</div>
 
+	<div id="player-plots-wrapper" class="sub-wrapper">
+		<script>
+			var playerId = <%= @player.id %>;
+		</script>
+		<script src='/js/playerPlots.js'></script>
+		<h3>Player Rating</h3>
+		<canvas id="player-rating-canvas"></canvas>
+	</div>
+
 </div>

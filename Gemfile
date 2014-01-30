@@ -10,3 +10,5 @@ gem 'sinatra-activerecord'
 gem 'activerecord'
 
 gem 'pg'
+
+gem 'json'
